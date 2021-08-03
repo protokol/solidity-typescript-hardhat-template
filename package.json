@@ -4,13 +4,10 @@
     "description": "",
     "scripts": {
         "test": "hardhat test",
-        "test-integration": "hardhat test test/integration/APIConsumer_int_test.js --network kovan; hardhat test test/integration/RandomNumberConsumer_int_test.js --network kovan",
         "lint:fix": "prettier --write 'scripts/**/*.{js,ts}' 'test/**/*.{js,ts}' 'tasks/**/*.{js,ts}' && tslint --fix --config tslint.json --project tsconfig.json && solhint contracts/**/*.sol",
         "lint": "tslint --config tslint.json --project tsconfig.json && solhint contracts/**/*.sol",
         "format": "prettier --check \"**/*.{ts,js,sol}\"",
-        "format:fix": "prettier --write \"**/*.{ts,js,sol}\"",
-        "build": "tsc",
-        "watch": "tsc -w"
+        "format:fix": "prettier --write \"**/*.{ts,js,sol}\""
     },
     "files": [
         "dist/src/",
