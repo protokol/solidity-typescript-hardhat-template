@@ -15,10 +15,12 @@ https://hardhat.org/guides/shorthand.html
 
 ## Usage
 
-- `hh compile` - compile smart contract and generate typechain ts bindings
-- `hh test` - run tests
-- `hh deploy` - deploy to local network (see options for more)
-- `hh TABTAB` - autocomplete - check for other tasks and options
+Run `npm install` and then:
+
+- `hh compile` - to compile smart contract and generate typechain ts bindings
+- `hh test` - to run tests
+- `hh deploy` - to deploy to local network (see options for more)
+- `hh TABTAB` - to use autocomplete.
 
 
 Check `package.json` scripts for more options.
