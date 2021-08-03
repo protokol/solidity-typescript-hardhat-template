@@ -4,9 +4,11 @@
 
 import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-etherscan";
+import "@nomiclabs/hardhat-solhint";
 import "@typechain/hardhat";
 import "dotenv/config";
 import "hardhat-deploy";
+import "solidity-coverage";
 
 import "./tasks/accounts";
 import "./tasks/balance";

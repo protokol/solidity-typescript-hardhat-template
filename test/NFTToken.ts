@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Signer, SignerWithAddress } from "ethers";
+import { Signer } from "ethers";
 import { deployments, ethers } from "hardhat";
 
 import { NFTToken, NFTToken__factory } from "../typechain";
