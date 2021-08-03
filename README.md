@@ -1,3 +1,5 @@
+![Img](header.png)
+
 # TypeScript Solidity Boilerplate Starter Kit
 
 A BoilerPlate Template Project To Start Solidity Development With Hardhat and Typescript. All you have to do is create a new repository from the template and start coding your smartcontracts. 
