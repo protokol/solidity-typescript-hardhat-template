@@ -9,7 +9,7 @@ A BoilerPlate Template Project To Start Solidity Development With Hardhat and Ty
 - typescript support enabled
 - typechain plugin installed (typescript type bindings are generated from smart contracts)/check Typechain docs
 - hardhat-deploy plugin enabled (use deployments from `deploy` folder, order and tag them; multi-network)
-- hardhat console enabled - to allow of 'solidity' console.log usage
+- hardhat console enabled - to allow console.log usage within solidity code
 - testing environment configured and operational
 
 Check the Hardhat documentation for more information. 
