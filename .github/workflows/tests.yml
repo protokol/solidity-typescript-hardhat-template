@@ -1,0 +1,39 @@
+name: TESTS
+
+on:
+  push:
+    branches:
+      - "main"
+      - "develop"
+  pull_request:
+    types: [ready_for_review, synchronize, opened]
+
+jobs:
+  tests:
+    name: TESTS
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install
+        run: npm run install
+    
+      - name: Setup .env
+        uses: SpicyPizza/create-envfile@v1
+        with:
+            envkey_RINKEBY_RPC_URL: ${{ secrets.SECRET_RINKEBY_URL }}
+            envkey_PRIVATE_KEY: ${{ secrets.SECRET_PRIVATE_KEY }}
+            file_name: .env
+
+      - name: Compile
+        run: npm run compile
