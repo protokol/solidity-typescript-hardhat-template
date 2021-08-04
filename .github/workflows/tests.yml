@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install
-        run: npm run install
+        run: npm install
     
       - name: Setup .env
         uses: SpicyPizza/create-envfile@v1
