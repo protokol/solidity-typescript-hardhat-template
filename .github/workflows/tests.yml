@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -33,6 +33,9 @@ jobs:
         with:
             envkey_RINKEBY_RPC_URL: ${{ secrets.SECRET_RINKEBY_URL }}
             envkey_PRIVATE_KEY: ${{ secrets.SECRET_PRIVATE_KEY }}
+            envkey_PINATA_API_KEY: 'API_KEY'
+            envkey_PINATA_API_SECRET: 'API_SECRET'
+            env_key_NFT_CONTRACT_ADDRESS: '0x123lsafddws0fsd2134dsa0wdfsd0fsdf0fsdfs'
             file_name: .env
 
       - name: Compile
