@@ -31,8 +31,8 @@ jobs:
       - name: Setup .env
         uses: SpicyPizza/create-envfile@v1
         with:
-            envkey_RINKEBY_RPC_URL: ${{ secrets.SECRET_RINKEBY_URL }}
-            envkey_PRIVATE_KEY: ${{ secrets.SECRET_PRIVATE_KEY }}
+            envkey_RINKEBY_RPC_URL: ${{ secrets.RINKEBY_RPC_URL }}
+            envkey_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
             envkey_PINATA_API_KEY: 'API_KEY'
             envkey_PINATA_API_SECRET: 'API_SECRET'
             env_key_NFT_CONTRACT_ADDRESS: '0x123lsafddws0fsd2134dsa0wdfsd0fsdf0fsdfs'
