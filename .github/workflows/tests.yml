@@ -27,13 +27,6 @@ jobs:
 
       - name: Install
         run: npm install
-    
-      - name: Setup .env
-        uses: SpicyPizza/create-envfile@v1
-        with:
-            envkey_RINKEBY_RPC_URL: ${{ secrets.SECRET_RINKEBY_URL }}
-            envkey_PRIVATE_KEY: ${{ secrets.SECRET_PRIVATE_KEY }}
-            file_name: .env
 
       - name: Compile
-        run: npm run compile
+        run: npm run test
