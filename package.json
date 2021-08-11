@@ -39,7 +39,7 @@
         "chai-ethers": "0.0.1",
         "dotenv": "10.0.0",
         "ethers": "5.4.4",
-        "hardhat": "2.5.0",
+        "hardhat": "2.6.0",
         "hardhat-deploy": "0.8.11",
         "mocha-skip-if": "0.0.3",
         "prettier": "2.3.2",
