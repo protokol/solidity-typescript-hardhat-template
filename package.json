@@ -42,7 +42,7 @@
         "hardhat": "2.6.4",
         "hardhat-deploy": "0.9.1",
         "mocha-skip-if": "0.0.3",
-        "prettier": "2.3.2",
+        "prettier": "2.4.1",
         "prettier-plugin-solidity": "1.0.0-beta.17",
         "solhint": "3.3.6",
         "solhint-plugin-prettier": "0.0.5",
