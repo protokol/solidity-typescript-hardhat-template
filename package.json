@@ -21,7 +21,7 @@
     "author": "Kristjan Kosic <kristjan@protokol.com>",
     "license": "MIT",
     "devDependencies": {
-        "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.10",
+        "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.11",
         "@nomiclabs/hardhat-etherscan": "2.1.6",
         "@nomiclabs/hardhat-solhint": "2.0.0",
         "@nomiclabs/hardhat-web3": "2.0.0",
