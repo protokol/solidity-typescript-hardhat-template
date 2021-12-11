@@ -90,4 +90,8 @@ module.exports = {
     mocha: {
         timeout: 100000,
     },
+    typechain: {
+        outDir: "typechain",
+        target: "ethers-v5",
+    },
 };
