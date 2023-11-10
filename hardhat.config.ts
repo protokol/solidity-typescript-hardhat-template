@@ -1,11 +1,8 @@
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
+import "@nomicfoundation/hardhat-toolbox";
 
-import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-etherscan";
+import { HardhatUserConfig } from "hardhat/config";
+
 import "@nomiclabs/hardhat-solhint";
-import "@typechain/hardhat";
 import "dotenv/config";
 import "hardhat-deploy";
 import "solidity-coverage";
@@ -30,10 +27,8 @@ const ETHERSCAN_API_KEY =
     process.env.ETHERSCAN_API_KEY || "Your etherscan API key";
 // optional
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "your private key";
-const PINATA_API_KEY = process.env.PINATA_API_KEY;
-const PINATA_API_SECRET = process.env.PINATA_API_SECRET;
 
-module.exports = {
+const config: HardhatUserConfig = {
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {
@@ -83,15 +78,10 @@ module.exports = {
     solidity: {
         compilers: [
             {
-                version: "0.8.4",
+                version: "0.8.20",
             },
         ],
     },
-    mocha: {
-        timeout: 100000,
-    },
-    typechain: {
-        outDir: "typechain",
-        target: "ethers-v5",
-    },
 };
+
+export default config;

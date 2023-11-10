@@ -1,8 +1,6 @@
-export/
-deployments/
-artifacts/
-cache/
-coverage/
-node_modules/
-package.json
-typechain/
+artifacts
+cache
+node_modules
+.env
+.idea
+typechain-types
