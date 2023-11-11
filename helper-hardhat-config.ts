@@ -1,5 +1,5 @@
 interface INetworkConfig {
-    [key: number]: any;
+    [key: number]: any
 }
 const networkConfig: INetworkConfig = {
     0: {
@@ -52,21 +52,21 @@ const networkConfig: INetworkConfig = {
         linkToken: "0x326c977e6efc84e512bb9c30f76e30c160ed06fb",
         fundAmount: "0",
     },
-};
+}
 
-const developmentChains = ["hardhat", "localhost"];
+const developmentChains = ["hardhat", "localhost"]
 
 const getNetworkIdFromName = async (networkIdName: string) => {
     for (const id in networkConfig) {
         if (networkConfig[id][`"name"`] === networkIdName) {
-            return id;
+            return id
         }
     }
-    return null;
-};
+    return null
+}
 
 exports = {
     networkConfig,
     getNetworkIdFromName,
     developmentChains,
-};
+}

@@ -1,32 +1,32 @@
-import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-toolbox"
 
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig } from "hardhat/config"
 
-import "@nomiclabs/hardhat-solhint";
-import "dotenv/config";
-import "hardhat-deploy";
-import "solidity-coverage";
+import "@nomiclabs/hardhat-solhint"
+import "dotenv/config"
+import "hardhat-deploy"
+import "solidity-coverage"
 
-import "./tasks/utils/accounts";
-import "./tasks/utils/balance";
-import "./tasks/utils/block-number";
-import "./tasks/utils/send-eth";
+import "./tasks/utils/accounts"
+import "./tasks/utils/balance"
+import "./tasks/utils/block-number"
+import "./tasks/utils/send-eth"
 
 const MAINNET_RPC_URL =
     process.env.MAINNET_RPC_URL ||
     process.env.ALCHEMY_MAINNET_RPC_URL ||
-    "https://eth-mainnet.alchemyapi.io/v2/your-api-key";
+    "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const RINKEBY_RPC_URL =
     process.env.RINKEBY_RPC_URL ||
-    "https://eth-rinkeby.alchemyapi.io/v2/your-api-key";
+    "https://eth-rinkeby.alchemyapi.io/v2/your-api-key"
 const KOVAN_RPC_URL =
     process.env.KOVAN_RPC_URL ||
-    "https://eth-kovan.alchemyapi.io/v2/your-api-key";
-const MNEMONIC = process.env.MNEMONIC || "your mnemonic";
+    "https://eth-kovan.alchemyapi.io/v2/your-api-key"
+const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
 const ETHERSCAN_API_KEY =
-    process.env.ETHERSCAN_API_KEY || "Your etherscan API key";
+    process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
 // optional
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "your private key";
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "your private key"
 
 const config: HardhatUserConfig = {
     defaultNetwork: "hardhat",
@@ -82,6 +82,6 @@ const config: HardhatUserConfig = {
             },
         ],
     },
-};
+}
 
-export default config;
+export default config
