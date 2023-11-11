@@ -1,15 +1,15 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "target": "es2021",
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "skipLibCheck": true,
-        "resolveJsonModule": true,
-        "skipDefaultLibCheck": true
-    },
-    "include": ["./test", "./typechain-types"],
-    "files": ["./hardhat.config.ts"]
+	"compilerOptions": {
+		"baseUrl": ".",
+		"target": "es2021",
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"skipDefaultLibCheck": true
+	},
+	"include": ["./test", "./typechain-types", "./deploy"],
+	"files": ["./hardhat.config.ts"]
 }

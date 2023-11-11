@@ -35,7 +35,7 @@ contract BasicERC721 is ERC721, ERC721Pausable, Ownable, ERC721Burnable {
         _unpause();
     }
 
-    function _baseURI() internal pure override returns (string memory) {
+    function _baseURI() internal view override returns (string memory) {
         return baseURI;
     }
 

@@ -1,35 +1,35 @@
 name: TESTS
 
 on:
-  push:
-    branches:
-      - "main"
-      - "develop"
-  pull_request:
-    types: [ready_for_review, synchronize, opened]
+    push:
+        branches:
+            - "main"
+            - "develop"
+    pull_request:
+        types: [ready_for_review, synchronize, opened]
 
 jobs:
-  tests:
-    name: TESTS
-    runs-on: ubuntu-latest
+    tests:
+        name: TESTS
+        runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
+        strategy:
+            matrix:
+                node-version: [14.x]
 
-    steps:
-      - uses: actions/checkout@v3
+        steps:
+            - uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
 
-      - name: Install
-        run: npm install
+            - name: Install
+              run: npm install
 
-      - name: Compile
-        run: npm run compile
+            - name: Compile
+              run: npm run compile
 
-      - name: Test
-        run: npm run test
+            - name: Test
+              run: npm run test
