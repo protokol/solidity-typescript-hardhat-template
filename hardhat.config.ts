@@ -7,10 +7,10 @@ import "dotenv/config";
 import "hardhat-deploy";
 import "solidity-coverage";
 
-import "./tasks/accounts";
-import "./tasks/balance";
-import "./tasks/block-number";
-import "./tasks/create-collectibles";
+import "./tasks/utils/accounts";
+import "./tasks/utils/balance";
+import "./tasks/utils/block-number";
+import "./tasks/utils/send-eth";
 
 const MAINNET_RPC_URL =
     process.env.MAINNET_RPC_URL ||
