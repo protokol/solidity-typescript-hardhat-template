@@ -14,6 +14,10 @@ import "./tasks/utils/balance"
 import "./tasks/utils/block-number"
 import "./tasks/utils/send-eth"
 
+import "./tasks/erc721/mint"
+import "./tasks/erc721/base-uri"
+import "./tasks/erc721/contract-uri"
+
 const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || "https://eth-mainnet.g.alchemy.com/v2/your-api-key"
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/your-api-key"
 const MATIC_RPC_URL = process.env.MATIC_RPC_URL || "https://polygon-mainnet.g.alchemy.com/v2/your-api-key"
