@@ -14,15 +14,16 @@ import "./tasks/utils/balance"
 import "./tasks/utils/block-number"
 import "./tasks/utils/send-eth"
 
-const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
-const SEPOLIA_RPC_URL = process.env.ROPSTEN_RPC_URL || "https://eth-sepolia.alchemyapi.io/v2/your-api-key"
-const MATIC_RPC_URL = process.env.MATIC_RPC_URL || "https://polygon-mainnet.infura.io/v3/your-api-key"
-const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL || "https://polygon-mumbai.infura.io/v3/your-api-key"
-const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
-const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || ""
+const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || "https://eth-mainnet.g.alchemy.com/v2/your-api-key"
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/your-api-key"
+const MATIC_RPC_URL = process.env.MATIC_RPC_URL || "https://polygon-mainnet.g.alchemy.com/v2/your-api-key"
+const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL || "https://polygon-mumbai.g.alchemy.com/v2/v3/your-api-key"
 
-// optional
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "api-key"
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "api-key"
+
+// Import MNEMONIC or single private key
+const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 
 const config: HardhatUserConfig = {

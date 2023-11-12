@@ -11,5 +11,4 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 	})
 }
 export default func
-func.id = "basic_erc721"
-func.tags = ["nft"]
+func.tags = ["erc721"]

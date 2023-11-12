@@ -9,5 +9,10 @@ typechain-types
 cache
 artifacts
 
+# Depyloments
+## Ucomment if you want to save deployments
+deployments/*
+!deployments/.gitkeep
+
 # IDE
 .idea
