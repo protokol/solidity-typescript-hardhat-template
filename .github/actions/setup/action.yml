@@ -9,6 +9,8 @@ runs:
 
     - name: Install
       run: npm install
+      shell: bash
 
     - name: Compile
       run: npm run compile
+      shell: bash
