@@ -1,0 +1,14 @@
+name: Setup
+description: Setup the environment for the other jobs and steps
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+
+    - name: Install
+      run: npm install
+
+    - name: Compile
+      run: npm run compile

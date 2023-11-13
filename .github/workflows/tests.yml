@@ -1,35 +1,17 @@
 name: TESTS
 
 on:
-    push:
-        branches:
-            - "main"
-            - "develop"
-    pull_request:
-        types: [ready_for_review, synchronize, opened]
+  push
 
 jobs:
     tests:
         name: TESTS
         runs-on: ubuntu-latest
 
-        strategy:
-            matrix:
-                node-version: [14.x]
-
         steps:
-            - uses: actions/checkout@v3
+          - uses: actions/checkout@v3
 
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ matrix.node-version }}
+          - uses: ./.github/actions/setup
 
-            - name: Install
-              run: npm install
-
-            - name: Compile
-              run: npm run compile
-
-            - name: Test
-              run: npm run test
+          - name: Test
+            run: npm run coverage # or npm run test

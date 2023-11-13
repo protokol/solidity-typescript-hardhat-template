@@ -5,6 +5,7 @@
 	"scripts": {
 		"compile": "hardhat compile",
 		"test": "hardhat test",
+		"coverage": "hardhat coverage",
 		"deploy": "hardhat deploy",
 		"node": "hardhat node",
 		"sol:format:check": "prettier --check --plugin=prettier-plugin-solidity 'contracts/**/*.sol'",
