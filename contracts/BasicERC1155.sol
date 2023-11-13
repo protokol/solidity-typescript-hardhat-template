@@ -74,17 +74,11 @@ contract BasicERC1155 is
 	 * @dev Returns base uri and adds .json suffix
 	 * This is useful for metadata published on ipfs where files have .json suffix
 	 */
-	function uri(
-		uint256 id
-	) public view override returns (string memory) {
+	function uri(uint256 id) public view override returns (string memory) {
 		return
 			bytes(super.uri(id)).length > 0
 				? string(
-					abi.encodePacked(
-						super.uri(id),
-						id.toString(),
-						".json"
-					)
+					abi.encodePacked(super.uri(id), id.toString(), ".json")
 				)
 				: "";
 	}

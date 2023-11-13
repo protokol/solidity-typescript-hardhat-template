@@ -1,7 +1,6 @@
 name: TESTS
 
-on:
-  push
+on: push
 
 jobs:
     tests:
@@ -9,9 +8,9 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-          - uses: actions/checkout@v3
+            - uses: actions/checkout@v3
 
-          - uses: ./.github/actions/setup
+            - uses: ./.github/actions/setup
 
-          - name: Test
-            run: npm run coverage # or npm run test
+            - name: Test
+              run: npm run coverage # or npm run test

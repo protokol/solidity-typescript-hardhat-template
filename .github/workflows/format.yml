@@ -1,7 +1,6 @@
 name: FORMAT
 
-on:
-  push
+on: push
 
 jobs:
     prettier-ts:
@@ -9,45 +8,45 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-          - uses: actions/checkout@v3
+            - uses: actions/checkout@v3
 
-          - uses: ./.github/actions/setup
+            - uses: ./.github/actions/setup
 
-          - name: Prettier
-            run: npm run format:check
+            - name: Prettier
+              run: npm run format:check
 
     list-ts:
-      name: Check Eslint of TS and Other Files
-      runs-on: ubuntu-latest
+        name: Check Eslint of TS and Other Files
+        runs-on: ubuntu-latest
 
-      steps:
-        - uses: actions/checkout@v3
+        steps:
+            - uses: actions/checkout@v3
 
-        - uses: ./.github/actions/setup
+            - uses: ./.github/actions/setup
 
-        - name: Prettier
-          run: npm run lint:check
+            - name: Prettier
+              run: npm run lint:check
 
     prettier-sol:
-      name: Check Prettier of Solidity Files
-      runs-on: ubuntu-latest
+        name: Check Prettier of Solidity Files
+        runs-on: ubuntu-latest
 
-      steps:
-        - uses: actions/checkout@v3
+        steps:
+            - uses: actions/checkout@v3
 
-        - uses: ./.github/actions/setup
+            - uses: ./.github/actions/setup
 
-        - name: Prettier
-          run: npm run sol:format:check
+            - name: Prettier
+              run: npm run sol:format:check
 
     solhint:
-      name: Run Solhint
-      runs-on: ubuntu-latest
+        name: Run Solhint
+        runs-on: ubuntu-latest
 
-      steps:
-        - uses: actions/checkout@v3
+        steps:
+            - uses: actions/checkout@v3
 
-        - uses: ./.github/actions/setup
+            - uses: ./.github/actions/setup
 
-        - name: Solhint
-          run: npm run solhint
+            - name: Solhint
+              run: npm run solhint
