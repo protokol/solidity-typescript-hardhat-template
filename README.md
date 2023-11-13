@@ -95,7 +95,7 @@ Create `.env` file and add your environment variables. You can use `.env.example
 
 If you are going to use public network, make sure you include the right RPC provider for that network.
 
-Make sure you include either MNEMONIC or PRIVATE_KEY in your `.env` file.
+Make sure you include either `MNEMONIC` or `PRIVATE_KEY` in your `.env` file.
 
 ### Example Flow - Deploy ERC721 Token
 
