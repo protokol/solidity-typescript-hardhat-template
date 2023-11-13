@@ -10,7 +10,8 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - uses: ./.github/actions/setup
+            - name: Setup
+              uses: ./.github/actions/setup
 
             - name: Test
               run: npm run coverage # or npm run test
