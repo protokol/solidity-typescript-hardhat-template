@@ -2,7 +2,7 @@ import { expect } from "chai"
 import { deployments, ethers, getNamedAccounts } from "hardhat"
 import { makeInterfaceId } from "@openzeppelin/test-helpers"
 
-describe("BasicERC721", function () {
+describe("BasicERC721", () => {
 	const setupFixture = deployments.createFixture(async () => {
 		await deployments.fixture()
 		const signers = await getNamedAccounts()
@@ -126,6 +126,6 @@ describe("BasicERC721", function () {
 			])
 
 			expect(await contract.supportsInterface(erc721EnumerableInterfaceId)).to.equal(true)
-		});
+		})
 	})
 })
