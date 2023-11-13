@@ -121,7 +121,7 @@ hh erc721-mint \
  --recipient 0x73faDd7E476a9Bc2dA6D1512A528366A3E50c3cF \
  --network sepolia
 ```
-
+---
 ### Testing
 
 #### Run Tests
@@ -135,7 +135,7 @@ npm run test
 ```shell
 npm run coverage
 ```
-
+---
 ### Project Hygiene
 
 #### Prettier - Non Solidity Files
