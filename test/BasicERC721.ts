@@ -90,6 +90,14 @@ describe("BasicERC721", () => {
 			expect(await contract.tokenURI(1)).to.equal(`${contractConstructor.baseURI}1.json`)
 		})
 
+		it("Should Return Correct Token URI", async () => {
+			const { contract } = await setupFixture()
+
+			await expect(contract.tokenURI(1))
+				.to.be.revertedWithCustomError(contract, "ERC721NonexistentToken")
+				.withArgs(1)
+		})
+
 		it("Should Return Correct Contract URI", async () => {
 			const { contract, contractConstructor } = await setupFixture()
 
