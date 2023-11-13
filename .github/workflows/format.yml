@@ -1,0 +1,56 @@
+name: FORMAT
+
+on: push
+
+jobs:
+    prettier-ts:
+        name: Check Prettier of TS and Other Files
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup
+              uses: ./.github/actions/setup
+
+            - name: Prettier
+              run: npm run format:check
+
+    list-ts:
+        name: Check Eslint of TS and Other Files
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup
+              uses: ./.github/actions/setup
+
+            - name: Lint
+              run: npm run lint:check
+
+    prettier-sol:
+        name: Check Prettier of Solidity Files
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup
+              uses: ./.github/actions/setup
+
+            - name: Prettier
+              run: npm run sol:format:check
+
+    solhint:
+        name: Run Solhint
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup
+              uses: ./.github/actions/setup
+
+            - name: Solhint
+              run: npm run solhint
