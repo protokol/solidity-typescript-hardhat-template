@@ -2,6 +2,6 @@
 	"extends": "solhint:recommended",
 	"plugins": [],
 	"rules": {
-		"func-visibility": ["error", { "ignoreConstructors": false }]
+		"func-visibility": ["error", { "ignoreConstructors": true }]
 	}
 }
