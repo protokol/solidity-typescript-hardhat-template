@@ -8,6 +8,10 @@ import { ERC1155Pausable } from "@openzeppelin/contracts/token/ERC1155/extension
 import { ERC1155Burnable } from "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import { ERC1155Supply } from "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 
+/**
+ * This file was generated with Openzeppelin Wizard and later modified.
+ * GO TO: https://wizard.openzeppelin.com/#erc1155
+ */
 contract BasicERC1155 is
 	ERC1155,
 	Ownable,

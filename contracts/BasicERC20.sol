@@ -6,6 +6,10 @@ import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import { ERC20Burnable } from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import { ERC20Pausable } from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 
+/**
+ * This file was generated with Openzeppelin Wizard and later modified.
+ * GO TO: https://wizard.openzeppelin.com/#erc20
+ */
 contract BasicERC20 is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
 	constructor(
 		string memory name,

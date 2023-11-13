@@ -8,6 +8,10 @@ import { ERC721Enumerable } from "@openzeppelin/contracts/token/ERC721/extension
 import { ERC721Pausable } from "@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
 import { ERC721Burnable } from "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 
+/**
+ * This file was generated with Openzeppelin Wizard and later modified.
+ * GO TO: https://wizard.openzeppelin.com/#erc721
+ */
 contract BasicERC721 is
 	ERC721,
 	ERC721Enumerable,
