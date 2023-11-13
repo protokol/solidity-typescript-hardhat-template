@@ -11,7 +11,7 @@ jobs:
         steps:
           - uses: actions/checkout@v3
 
-          - uses: ./.github/actions
+          - uses: ./.github/actions/setup.yml
 
           - name: Prettier
             run: npm run format:check
