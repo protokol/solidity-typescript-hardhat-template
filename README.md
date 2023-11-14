@@ -170,10 +170,15 @@ npm run solhint
 ```
 
 ## Contact Protokol
-Need additional help with your solidity project? 
+
+Need additional help with your solidity project?
+
 Protokol builds custom blockchain and web3 solutions for organisations of all sizes. We build everything from smart contracts, to dApps, to fully bespoke web3 solutions.
 
 Reach out at [protokol.com/contact](https://www.protokol.com/contact/) to learn how our web3 development services could help bring your project to life.
 
 ## Join Protokol
-Looking for an exciting new role in web3? Head over to [protokol.com/careers](https://www.protokol.com/careers/) to discover the roles we have available or to submit your resume. 
+
+Looking for an exciting new role in web3?
+
+Head over to [protokol.com/careers](https://www.protokol.com/careers/) to discover the roles we have available or to submit your résumé.
