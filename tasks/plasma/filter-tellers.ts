@@ -2,8 +2,6 @@ import { task } from "hardhat/config"
 import * as fs from "fs"
 import * as path from "path"
 
-import boringVaultAbi from "../../externalArtifacts/boringVault.json"
-import rolesAuthorityAbi from "../../externalArtifacts/rolesAuthority.json"
 import tellerAbi from "../../externalArtifacts/teller.json"
 
 // Addresses on mainnet
@@ -21,10 +19,10 @@ const SUPPORTED_TOKENS = [
 
 /**
  Example:
- hardhat find-tellers \
+ hardhat filter-tellers \
  --network mainnet
  */
-task("find-tellers", "Given an array of valid authorities, find tellers associated with those authorities with permissions to mint tokens")
+task("filter-tellers", "Given found tellers, filter by whether they support correct tokens")
     .setAction(async (taskArgs, { ethers }) => {
         const startTime = Date.now();
 
@@ -38,7 +36,7 @@ task("find-tellers", "Given an array of valid authorities, find tellers associat
         initializeFilteredTellersData(filteredTellersData);
 
         // Find all unfiltered tellers
-        const checkedTellersSet = new Set(allTellersData.supportingTellers.concat(allTellersData.unsupportingTellers));
+        const checkedTellersSet = new Set(filteredTellersData.supportingTellers.concat(filteredTellersData.unsupportingTellers).concat(filteredTellersData.invalidTellers));
         const uncheckedTellersSet = new Set<string>()
         for (const activeTeller of allTellersData.activeTellers) {
             if (!checkedTellersSet.has(activeTeller)) {
