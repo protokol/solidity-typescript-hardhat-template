@@ -13,7 +13,7 @@ const BLOCKS_IN_SIX_MONTHS = Math.round(86_400 * 182 / 12) // 6 months in second
 const FIRST_BLOCK = CURRENT_BLOCK - BLOCKS_IN_SIX_MONTHS    // Arbitrary starting point, before which the Plasma teller probably was not deployed
 
 const DEFAULT_SEARCH_BLOCK_COUNT = 500; // Default number of blocks to search for tellers at a time
-const DEFAULT_SEARCH_REPETITIONS = 10; // Default number of times to repeat the search for tellers
+const DEFAULT_SEARCH_REPETITIONS = 50; // Default number of times to repeat the search for tellers
 
 /**
  Example:
@@ -22,6 +22,8 @@ const DEFAULT_SEARCH_REPETITIONS = 10; // Default number of times to repeat the 
  */
 task("find-tellers", "Given an array of valid authorities, find tellers associated with those authorities with permissions to mint tokens")
     .setAction(async (taskArgs, { ethers }) => {
+        const startTime = Date.now();
+
         // Fetch vaults
         const vaultsPath = path.resolve(__dirname, '../../data/scannedVaults.json');
         const tellersPath = path.resolve(__dirname, '../../data/scannedTellers.json');
@@ -37,8 +39,8 @@ task("find-tellers", "Given an array of valid authorities, find tellers associat
         let activeTellers: Set<string> = new Set(tellersData.activeTellers);
         let inactiveTellers: Set<string> = new Set(tellersData.inactiveTellers);
         for (let i = 0; i < DEFAULT_SEARCH_REPETITIONS; i++) {
-            console.log(`Searching for tellers in blocks ${tellersData.lastScannedBlock + 1 + i * DEFAULT_SEARCH_BLOCK_COUNT} to 
-                ${tellersData.lastScannedBlock + (i + 1) * DEFAULT_SEARCH_BLOCK_COUNT}`);
+            console.log(`Searching for tellers in blocks ${tellersData.lastScannedBlock + 1 + i * DEFAULT_SEARCH_BLOCK_COUNT} to ${tellersData.lastScannedBlock + (i + 1) * DEFAULT_SEARCH_BLOCK_COUNT}`);
+            
             for (let authorityAddress of vaultData.authorityAddresses) {
                 const logs = await ethers.provider.getLogs({
                     address: authorityAddress,
@@ -79,6 +81,9 @@ task("find-tellers", "Given an array of valid authorities, find tellers associat
         tellersData.inactiveTellers = Array.from(inactiveTellers);
 
         fs.writeFileSync(tellersPath, JSON.stringify(tellersData));
+
+        const endTime = Date.now();
+        console.log(`scanned ${DEFAULT_SEARCH_BLOCK_COUNT * DEFAULT_SEARCH_REPETITIONS} blocks in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
     })
 
 function initializeTellersData(data: any) {
