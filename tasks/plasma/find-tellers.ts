@@ -40,7 +40,7 @@ task("find-tellers", "Given an array of valid authorities, find tellers associat
         let inactiveTellers: Set<string> = new Set(tellersData.inactiveTellers);
         for (let i = 0; i < DEFAULT_SEARCH_REPETITIONS; i++) {
             console.log(`Searching for tellers in blocks ${tellersData.lastScannedBlock + 1 + i * DEFAULT_SEARCH_BLOCK_COUNT} to ${tellersData.lastScannedBlock + (i + 1) * DEFAULT_SEARCH_BLOCK_COUNT}`);
-            
+
             for (let authorityAddress of vaultData.authorityAddresses) {
                 const logs = await ethers.provider.getLogs({
                     address: authorityAddress,
@@ -56,7 +56,7 @@ task("find-tellers", "Given an array of valid authorities, find tellers associat
                         topics: log.topics as string[],
                         data: log.data,
                     })!;
-                    if (parsedLog.args.role !== mintRole) {
+                    if (parsedLog.args.role != mintRole) {
                         console.log('Found role update for non-mint role, skipping');
                         continue
                     }
