@@ -25,6 +25,7 @@ import "./tasks/erc1155/base-uri"
 import "./tasks/erc1155/contract-uri"
 
 import "./tasks/plasma/find-eligible-vaults.ts"
+import "./tasks/plasma/find-tellers.ts"
 
 const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || "https://eth-mainnet.g.alchemy.com/v2/your-api-key"
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/your-api-key"
