@@ -6,7 +6,7 @@ import { buildModule } from "@nomicfoundation/hardhat-ignition/modules"
 const BasicERC20Module = buildModule("BasicERC20Module", (m) => {
 	// Contract parameters
 	const tokenName = m.getParameter("name", "Default Token Name")
-	const tokenSymbol = m.getParameter("symbol", "DTS")
+	const tokenSymbol = m.getParameter("symbol", "DTN")
 	// Account index 0 is the owner and deployer
 	const owner = m.getAccount(0)
 
