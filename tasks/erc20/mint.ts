@@ -2,8 +2,8 @@ import { task } from "hardhat/config"
 
 /**
  Example:
- hardhat erc20-mint \
- --contract 0xca6C5326076fe4a1a2369D5Ed8Dd7162c922CD1D \
+ npx hardhat erc20-mint \
+ --contract 0xe48A08C8C941c86D671D17EF50892D518D6f2bf0 \
  --recipient 0x73faDd7E476a9Bc2dA6D1512A528366A3E50c3cF \
  --amount 10000 \
  --network sepolia
