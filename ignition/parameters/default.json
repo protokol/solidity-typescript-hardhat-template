@@ -1,1 +1,6 @@
-{}
+{
+  "BasicERC20Module": {
+    "name": "ProtoToken",
+    "symbol": "PT"
+  }
+}
