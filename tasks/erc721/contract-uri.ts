@@ -2,7 +2,7 @@ import { task } from "hardhat/config"
 
 /**
  Example:
- hardhat erc721-contract-uri \
+ npx hardhat erc721-contract-uri \
  --contract 0x77337983A7D1699FaF51a5f43b9907fB7B614097 \
  --uri https://ipfs.io/ipfs/new-contract-uri-ipfs-hash \
  --network sepolia

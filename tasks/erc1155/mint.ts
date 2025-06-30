@@ -2,7 +2,7 @@ import { task } from "hardhat/config"
 
 /**
  Example:
- hardhat erc1155-mint \
+ npx hardhat erc1155-mint \
  --contract 0x320bd6de80d3D5361e1c9bB4CF1D7D9Ef24F3Ac7 \
  --recipient 0x73faDd7E476a9Bc2dA6D1512A528366A3E50c3cF \
  --id 1 \
