@@ -7,20 +7,7 @@ import "solidity-coverage"
 
 import "dotenv/config"
 
-import "./tasks/utils/accounts"
-import "./tasks/utils/balance"
-import "./tasks/utils/block-number"
-import "./tasks/utils/send-eth"
-
-import "./tasks/erc721/mint"
-import "./tasks/erc721/base-uri"
-import "./tasks/erc721/contract-uri"
-
-import "./tasks/erc20/mint"
-
-import "./tasks/erc1155/mint"
-import "./tasks/erc1155/base-uri"
-import "./tasks/erc1155/contract-uri"
+import "./tasks"
 
 const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || "https://eth-mainnet.g.alchemy.com/v2/your-api-key"
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/your-api-key"
