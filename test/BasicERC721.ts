@@ -1,17 +1,17 @@
 import { expect } from "chai"
-import { ethers, getNamedAccounts } from "hardhat"
+import { ethers } from "hardhat"
 import { makeInterfaceId } from "@openzeppelin/test-helpers"
 import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers"
 
 describe("BasicERC721", () => {
 	const setupFixture = async () => {
-		const signers = await getNamedAccounts()
+		const signers = await ethers.getSigners()
 
 		const name = "ProtoToken"
 		const symbol = "PT"
 		const baseURI = "ipfs://base-uri/"
 		const contractURI = "ipfs://contract-uri"
-		const owner = signers.deployer
+		const owner = signers[0].address
 
 		const BasicERC721 = await ethers.getContractFactory("BasicERC721")
 		const contract = await BasicERC721.deploy(name, symbol, baseURI, contractURI, owner, {
@@ -21,7 +21,7 @@ describe("BasicERC721", () => {
 		return {
 			contract,
 			contractAddress: await contract.getAddress(),
-			deployer: signers.deployer,
+			deployer: owner,
 			accounts: await ethers.getSigners(),
 			contractConstructor: {
 				name,

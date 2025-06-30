@@ -2,9 +2,7 @@ import "@nomicfoundation/hardhat-toolbox"
 
 import { HardhatUserConfig } from "hardhat/config"
 
-import "hardhat-deploy"
 import "@nomiclabs/hardhat-solhint"
-import "hardhat-deploy"
 import "solidity-coverage"
 
 import "dotenv/config"
@@ -74,15 +72,6 @@ const config: HardhatUserConfig = {
 			// Polygon
 			polygon: POLYGONSCAN_API_KEY,
 			polygonMumbai: POLYGONSCAN_API_KEY,
-		},
-	},
-	namedAccounts: {
-		deployer: {
-			default: 0, // here this will by default take the first account as deployer
-			mainnet: 0, // similarly on mainnet it will take the first account as deployer.
-		},
-		owner: {
-			default: 0,
 		},
 	},
 	solidity: {

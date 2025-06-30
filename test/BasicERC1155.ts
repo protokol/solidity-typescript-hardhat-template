@@ -1,16 +1,16 @@
 import { expect } from "chai"
-import { ethers, getNamedAccounts } from "hardhat"
+import { ethers } from "hardhat"
 import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers"
 
 describe("BasicERC1155", () => {
 	const setupFixture = async () => {
-		const signers = await getNamedAccounts()
+		const signers = await ethers.getSigners()
 
 		const name = "ProtoToken"
 		const symbol = "PT"
 		const baseURI = "ipfs://base-uri/"
 		const contractURI = "ipfs://contract-uri"
-		const owner = signers.deployer
+		const owner = signers[0].address
 
 		const BasicERC1155 = await ethers.getContractFactory("BasicERC1155")
 		const contract = await BasicERC1155.deploy(name, symbol, baseURI, contractURI, owner, {
@@ -20,7 +20,7 @@ describe("BasicERC1155", () => {
 		return {
 			contract,
 			contractAddress: await contract.getAddress(),
-			deployer: signers.deployer,
+			deployer: owner,
 			accounts: await ethers.getSigners(),
 			contractConstructor: {
 				name,
