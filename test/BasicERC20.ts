@@ -11,7 +11,9 @@ describe("BasicERC20", () => {
 		const owner = signers.deployer
 
 		const BasicERC20 = await ethers.getContractFactory("BasicERC20")
-		const contract = await BasicERC20.deploy(name, symbol, owner)
+		const contract = await BasicERC20.deploy(name, symbol, owner, {
+			from: owner,
+		})
 
 		return {
 			contract,
