@@ -6,7 +6,7 @@
 		"compile": "hardhat compile",
 		"test": "hardhat test",
 		"coverage": "hardhat coverage",
-		"deploy": "hardhat deploy",
+		"deploy": "hardhat ignition deploy",
 		"node": "hardhat node",
 		"sol:format:check": "prettier --check --plugin=prettier-plugin-solidity 'contracts/**/*.sol'",
 		"sol:format:write": "prettier --write --plugin=prettier-plugin-solidity 'contracts/**/*.sol'",

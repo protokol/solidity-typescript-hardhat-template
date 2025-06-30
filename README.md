@@ -8,7 +8,7 @@ All you have to do is create a new repository from the template and start coding
 ## Hardhat Configuration
 
 - [Typechain](https://github.com/dethcrypto/TypeChain) plugin enabled (typescript type bindings for smart contracts)
-- [hardhat-deploy](https://github.com/wighawag/hardhat-deploy) plugin enabled
+- [Ignition](https://hardhat.org/ignition/docs/getting-started) for contract deployment
 - Testing environment configured and operational, with test coverage
 - Prettier and eslint configured for project files and solidity smart contract
 - [Solhint](https://github.com/protofire/solhint) configured for enforcing best practices
@@ -27,21 +27,35 @@ https://hardhat.org/getting-started/
 │   ├── BasicERC1155.sol
 │   ├── BasicERC20.sol
 │   └── BasicERC721.sol
-├── deploy
-│   ├── Deploy_BasicERC1155.ts
-│   ├── Deploy_BasicERC20.ts
-│   └── Deploy_BasicERC721.ts
-├── deployments
-├── hardhat.config.ts
+├── ignition
+│   ├── deployments
+│   ├── modules
+│   │   ├── BasicERC1155Module.ts
+│   │   ├── BasicERC20Module.ts
+│   │   └── BasicERC721Module.ts
+│   └── parameters
+│       └── custom.json
 ├── tasks
 │   ├── erc1155
+│   │   ├── base-uri.ts
+│   │   ├── contract-uri.ts
+│   │   └── mint.ts
 │   ├── erc20
+│   │   └── mint.ts
 │   ├── erc721
+│   │   ├── base-uri.ts
+│   │   ├── contract-uri.ts
+│   │   └── mint.ts
 │   └── utils
-└── test
-    ├── BasicERC1155.ts
-    ├── BasicERC20.ts
-    └── BasicERC721.ts
+│       ├── accounts.ts
+│       ├── balance.ts
+│       ├── block-number.ts
+│       └── send-eth.ts
+├── test
+│   ├── BasicERC1155.ts
+│   ├── BasicERC20.ts
+│   └── BasicERC721.ts
+└── hardhat.config.ts
 ```
 
 ## Supported Networks
@@ -68,7 +82,7 @@ https://hardhat.org/guides/shorthand.html
 
 - `hh compile` - to compile smart contract and generate typechain ts bindings
 - `hh test` - to run tests
-- `hh deploy` - to deploy to local network (see options for more)
+- `hh igntion` - to deploy smart contracts
 - `hh node` - to run a localhost node
 - `hh help` - to see all available commands
 - `hh TABTAB` - to use autocomplete
@@ -101,23 +115,37 @@ Make sure you include either `MNEMONIC` or `PRIVATE_KEY` in your `.env` file.
 
 > This is an example flow to deploy an ERC721 token to a public network and interact with it.
 
-#### 1. Deploy BasicERC721 Contract
+#### 1.1 Deploy BasicERC721 Contract
 
 ```shell
-hh deploy --network sepolia --tags BasicERC721
+hh ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia
 ```
 
-#### 2. Verify Contract
+**Verify contract**
 
 ```shell
-hh --network sepolia etherscan-verify
+hh ignition verify chain-11155111
 ```
 
-#### 3. Interact With Contract - Mint
+#### 1.2 Deploy and Verify
+
+```shell
+hh ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia --verify
+```
+
+#### 1.3 Deploy and Verify with Custom Parameters
+
+Look at `ignition/parameters/custom.json` to see how to adjust contract parameters
+
+```shell
+hh ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia --verify --parameters ignition/parameters/custom.json
+```
+
+#### 2. Interact With Contract - Mint
 
 ```shell
 hh erc721-mint \
- --contract 0x77337983A7D1699FaF51a5f43b9907fB7B614097 \
+ --contract 0x1FEB5675Be6F256c4680BE447D6C353E02e04fb9 \
  --recipient 0x73faDd7E476a9Bc2dA6D1512A528366A3E50c3cF \
  --network sepolia
 ```
