@@ -1,25 +1,24 @@
 import { expect } from "chai"
-import { deployments, ethers, getNamedAccounts } from "hardhat"
+import { ethers } from "hardhat"
+import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers"
 
 describe("BasicERC20", () => {
-	const setupFixture = deployments.createFixture(async () => {
-		await deployments.fixture()
-		const signers = await getNamedAccounts()
+	const setupFixture = async () => {
+		const signers = await ethers.getSigners()
 
 		const name = "ProtoToken"
 		const symbol = "PT"
-		const owner = signers.deployer
+		const owner = signers[0].address
 
-		const contract = await ethers.deployContract(
-			"BasicERC20",
-			[name, symbol, owner],
-			await ethers.getSigner(signers.deployer)
-		)
+		const BasicERC20 = await ethers.getContractFactory("BasicERC20")
+		const contract = await BasicERC20.deploy(name, symbol, owner, {
+			from: owner,
+		})
 
 		return {
 			contract,
 			contractAddress: await contract.getAddress(),
-			deployer: signers.deployer,
+			deployer: owner,
 			accounts: await ethers.getSigners(),
 			contractConstructor: {
 				name,
@@ -27,10 +26,10 @@ describe("BasicERC20", () => {
 				owner,
 			},
 		}
-	})
+	}
 
 	it("Should Return Valid Contract Configurations Passed In Constructor", async () => {
-		const { contractConstructor, contract } = await setupFixture()
+		const { contractConstructor, contract } = await loadFixture(setupFixture)
 
 		expect(await contract.name()).to.equal(contractConstructor.name)
 		expect(await contract.symbol()).to.equal(contractConstructor.symbol)
@@ -39,7 +38,7 @@ describe("BasicERC20", () => {
 
 	describe("Minting Functionality", () => {
 		it("Should Increase Total Supply and User Supply When Minting", async () => {
-			const { contract, accounts } = await setupFixture()
+			const { contract, accounts } = await loadFixture(setupFixture)
 
 			expect(await contract.totalSupply()).to.equal(0)
 
@@ -52,7 +51,7 @@ describe("BasicERC20", () => {
 		})
 
 		it("Should Allow Only Owner to Mint Tokens", async () => {
-			const { contract, accounts } = await setupFixture()
+			const { contract, accounts } = await loadFixture(setupFixture)
 
 			await expect(contract.connect(accounts[1]).mint(accounts[1].address, 1000))
 				.to.be.revertedWithCustomError(contract, "OwnableUnauthorizedAccount")

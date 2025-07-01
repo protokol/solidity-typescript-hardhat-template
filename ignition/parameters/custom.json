@@ -1,0 +1,18 @@
+{
+	"BasicERC20Module": {
+		"name": "ProtoToken",
+		"symbol": "PT"
+	},
+	"BasicERC721Module": {
+		"name": "ProtoToken",
+		"symbol": "PT",
+		"baseUri": "ipfs://base-uri/",
+		"contractUri": "ipfs://contract-uri"
+	},
+	"BasicERC1155Module": {
+		"name": "ProtoToken",
+		"symbol": "PT",
+		"baseUri": "ipfs://base-uri/",
+		"contractUri": "ipfs://contract-uri"
+	}
+}

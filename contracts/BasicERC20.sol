@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.28;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -29,11 +29,7 @@ contract BasicERC20 is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
 		_mint(to, amount);
 	}
 
-	function _update(
-		address from,
-		address to,
-		uint256 value
-	) internal override(ERC20, ERC20Pausable) {
+	function _update(address from, address to, uint256 value) internal override(ERC20, ERC20Pausable) {
 		super._update(from, to, value);
 	}
 }

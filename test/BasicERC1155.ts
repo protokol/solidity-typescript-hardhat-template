@@ -1,27 +1,26 @@
 import { expect } from "chai"
-import { deployments, ethers, getNamedAccounts } from "hardhat"
+import { ethers } from "hardhat"
+import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers"
 
 describe("BasicERC1155", () => {
-	const setupFixture = deployments.createFixture(async () => {
-		await deployments.fixture()
-		const signers = await getNamedAccounts()
+	const setupFixture = async () => {
+		const signers = await ethers.getSigners()
 
 		const name = "ProtoToken"
 		const symbol = "PT"
 		const baseURI = "ipfs://base-uri/"
 		const contractURI = "ipfs://contract-uri"
-		const owner = signers.deployer
+		const owner = signers[0].address
 
-		const contract = await ethers.deployContract(
-			"BasicERC1155",
-			[name, symbol, baseURI, contractURI, owner],
-			await ethers.getSigner(signers.deployer)
-		)
+		const BasicERC1155 = await ethers.getContractFactory("BasicERC1155")
+		const contract = await BasicERC1155.deploy(name, symbol, baseURI, contractURI, owner, {
+			from: owner,
+		})
 
 		return {
 			contract,
 			contractAddress: await contract.getAddress(),
-			deployer: signers.deployer,
+			deployer: owner,
 			accounts: await ethers.getSigners(),
 			contractConstructor: {
 				name,
@@ -31,10 +30,10 @@ describe("BasicERC1155", () => {
 				owner,
 			},
 		}
-	})
+	}
 
 	it("Should Return Valid Contract Configurations Passed In Constructor", async () => {
-		const { contractConstructor, contract } = await setupFixture()
+		const { contractConstructor, contract } = await loadFixture(setupFixture)
 
 		expect(await contract.name()).to.equal(contractConstructor.name)
 		expect(await contract.symbol()).to.equal(contractConstructor.symbol)
@@ -44,7 +43,7 @@ describe("BasicERC1155", () => {
 
 	describe("Minting Functionality", () => {
 		it("Should Increase Supply When Minting", async () => {
-			const { contract, deployer } = await setupFixture()
+			const { contract, deployer } = await loadFixture(setupFixture)
 
 			expect(await contract["totalSupply(uint256)"](1)).to.equal(0)
 			expect(await contract["totalSupply(uint256)"](2)).to.equal(0)
@@ -59,7 +58,7 @@ describe("BasicERC1155", () => {
 		})
 
 		it("Should Allow Minting Only to Contract Owner - mint", async () => {
-			const { contract, accounts } = await setupFixture()
+			const { contract, accounts } = await loadFixture(setupFixture)
 
 			await expect(contract.connect(accounts[1]).mint(accounts[1].address, 1, 1000))
 				.to.be.revertedWithCustomError(contract, "OwnableUnauthorizedAccount")
@@ -67,7 +66,7 @@ describe("BasicERC1155", () => {
 		})
 
 		it("Should Allow Minting Only to Contract Owner - mintBatch", async () => {
-			const { contract, accounts } = await setupFixture()
+			const { contract, accounts } = await loadFixture(setupFixture)
 
 			await expect(contract.connect(accounts[1]).mintBatch(accounts[1].address, [1], [1000]))
 				.to.be.revertedWithCustomError(contract, "OwnableUnauthorizedAccount")
@@ -77,13 +76,13 @@ describe("BasicERC1155", () => {
 
 	describe("Contract And Token Metadata", () => {
 		it("Should Return Correct Token URI", async () => {
-			const { contract, contractConstructor } = await setupFixture()
+			const { contract, contractConstructor } = await loadFixture(setupFixture)
 
 			expect(await contract.uri(1)).to.equal(`${contractConstructor.baseURI}1.json`)
 		})
 
 		it("Should Return Correct Contract URI", async () => {
-			const { contract, contractConstructor } = await setupFixture()
+			const { contract, contractConstructor } = await loadFixture(setupFixture)
 
 			expect(await contract.contractURI()).to.equal(contractConstructor.contractURI)
 		})
