@@ -28,7 +28,7 @@
 		"@eslint/eslintrc": "^3.3.1",
 		"@eslint/js": "^9.30.0",
 		"@nomicfoundation/hardhat-toolbox": "^6.0.0",
-		"@nomiclabs/hardhat-solhint": "^4.0.2",
+		"@nomiclabs/hardhat-solhint": "^5.0.0",
 		"@openzeppelin/test-helpers": "^0.5.16",
 		"@types/node": "^22.15.34",
 		"@typescript-eslint/eslint-plugin": "^8.35.0",
