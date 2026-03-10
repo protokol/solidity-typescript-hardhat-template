@@ -68,24 +68,13 @@ https://hardhat.org/getting-started/
 
 Feel free to add more networks in `hardhat.config.ts` file.
 
-## Hardhat Shorthand
+## Common Hardhat Commands
 
-We recommend installing `hh autocomplete` so you can use `hh` shorthand globally.
-
-```shell
-npm i -g hardhat-shorthand
-```
-
-https://hardhat.org/guides/shorthand.html
-
-### Common Shorthand Commands
-
-- `hh compile` - to compile smart contract and generate typechain ts bindings
-- `hh test` - to run tests
-- `hh igntion` - to deploy smart contracts
-- `hh node` - to run a localhost node
-- `hh help` - to see all available commands
-- `hh TABTAB` - to use autocomplete
+- `npx hardhat compile` - to compile smart contract and generate typechain ts bindings
+- `npx hardhat test` - to run tests
+- `npx hardhat ignition` - to deploy smart contracts
+- `npx hardhat node` - to run a localhost node
+- `npx hardhat help` - to see all available commands
 
 ## Usage
 
@@ -118,19 +107,19 @@ Make sure you include either `MNEMONIC` or `PRIVATE_KEY` in your `.env` file.
 #### 1.1 Deploy BasicERC721 Contract
 
 ```shell
-hh ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia
+npx hardhat ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia
 ```
 
 **Verify contract**
 
 ```shell
-hh ignition verify chain-11155111
+npx hardhat ignition verify chain-11155111
 ```
 
 #### 1.2 Deploy and Verify
 
 ```shell
-hh ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia --verify
+npx hardhat ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia --verify
 ```
 
 #### 1.3 Deploy and Verify with Custom Parameters
@@ -138,13 +127,13 @@ hh ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia --ver
 Look at `ignition/parameters/custom.json` to see how to adjust contract parameters
 
 ```shell
-hh ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia --verify --parameters ignition/parameters/custom.json
+npx hardhat ignition deploy ignition/modules/BasicERC721Module.ts --network sepolia --verify --parameters ignition/parameters/custom.json
 ```
 
 #### 2. Interact With Contract - Mint
 
 ```shell
-hh erc721-mint \
+npx hardhat erc721-mint \
  --contract 0x1FEB5675Be6F256c4680BE447D6C353E02e04fb9 \
  --recipient 0x73faDd7E476a9Bc2dA6D1512A528366A3E50c3cF \
  --network sepolia
