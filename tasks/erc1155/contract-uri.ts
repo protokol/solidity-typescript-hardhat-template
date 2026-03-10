@@ -13,7 +13,7 @@ export const erc1155ContractUriTask = task(
 )
 	.addOption({ name: "contract", description: "BasicERC1155 Smart Contract Address", defaultValue: "" })
 	.addOption({ name: "uri", description: "New Contract URI", defaultValue: "" })
-	.setAction(async (taskArgs, hre) => {
+	.setInlineAction(async (taskArgs, hre) => {
 		const { ethers } = await hre.network.connect()
 		const contract = await ethers.getContractAt("BasicERC1155", taskArgs.contract)
 

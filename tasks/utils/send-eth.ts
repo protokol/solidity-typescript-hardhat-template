@@ -7,7 +7,7 @@ import { task } from "hardhat/config"
 export const sendEthTask = task("send-eth", "Send ETH to an address")
 	.addOption({ name: "recipient", description: "Recipient of ETH", defaultValue: "" })
 	.addOption({ name: "value", description: "Amount of ETH to send", defaultValue: "" })
-	.setAction(async (taskArgs, hre) => {
+	.setInlineAction(async (taskArgs, hre) => {
 		const { ethers } = await hre.network.connect()
 		const account = (await ethers.getSigners())[0]
 		const sendTrx = await account.sendTransaction({

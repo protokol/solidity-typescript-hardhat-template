@@ -14,7 +14,7 @@ export const erc1155MintTask = task("erc1155-mint", "Mint tokens for BasicERC115
 	.addOption({ name: "recipient", description: "Token Recipient", defaultValue: "" })
 	.addOption({ name: "id", description: "Token ID", defaultValue: "" })
 	.addOption({ name: "amount", description: "Token Amount", defaultValue: "" })
-	.setAction(async (taskArgs, hre) => {
+	.setInlineAction(async (taskArgs, hre) => {
 		const { ethers } = await hre.network.connect()
 		const contract = await ethers.getContractAt("BasicERC1155", taskArgs.contract)
 

@@ -10,7 +10,7 @@ import { task } from "hardhat/config"
 export const erc721MintTask = task("erc721-mint", "Mint token for BasicERC721 Smart Contract")
 	.addOption({ name: "contract", description: "BasicERC721 Smart Contract Address", defaultValue: "" })
 	.addOption({ name: "recipient", description: "NFT Token Recipient", defaultValue: "" })
-	.setAction(async (taskArgs, hre) => {
+	.setInlineAction(async (taskArgs, hre) => {
 		const { ethers } = await hre.network.connect()
 		const contract = await ethers.getContractAt("BasicERC721", taskArgs.contract)
 

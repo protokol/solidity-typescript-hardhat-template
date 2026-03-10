@@ -6,7 +6,7 @@ import { task } from "hardhat/config"
  */
 export const balanceTask = task("balance", "Prints an account's balance")
 	.addOption({ name: "account", description: "The account's address", defaultValue: "" })
-	.setAction(async (taskArgs, hre) => {
+	.setInlineAction(async (taskArgs, hre) => {
 		const { ethers } = await hre.network.connect()
 		const balance = await ethers.provider.getBalance(taskArgs.account)
 

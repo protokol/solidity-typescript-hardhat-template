@@ -12,7 +12,7 @@ export const erc20MintTask = task("erc20-mint", "Mint tokens for BasicERC20 Smar
 	.addOption({ name: "contract", description: "BasicERC20 Smart Contract Address", defaultValue: "" })
 	.addOption({ name: "recipient", description: "ERC20 Tokens Recipient", defaultValue: "" })
 	.addOption({ name: "amount", description: "ERC20 Tokens Amount", defaultValue: "" })
-	.setAction(async (taskArgs, hre) => {
+	.setInlineAction(async (taskArgs, hre) => {
 		const { ethers } = await hre.network.connect()
 		const contract = await ethers.getContractAt("BasicERC20", taskArgs.contract)
 
