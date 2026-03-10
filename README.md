@@ -224,17 +224,17 @@ Run `claude` in the project root — it automatically reads `CLAUDE.md` for proj
 
 ### Available Skills (Slash Commands)
 
-| Command | Description |
-|---------|-------------|
+| Command         | Description                                                                                                                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/new-contract` | Scaffolds a new Solidity contract with test file, Ignition module, and Hardhat tasks. Asks for contract name, token standard, and features, then generates all files following project conventions. |
-| `/deploy-check` | Runs a pre-deployment checklist: compile, test, coverage, lint, format check, Ignition module review, and network config verification. Outputs a PASS/FAIL/WARN summary table. |
+| `/deploy-check` | Runs a pre-deployment checklist: compile, test, coverage, lint, format check, Ignition module review, and network config verification. Outputs a PASS/FAIL/WARN summary table.                      |
 
 ### Available Agents
 
 - **Security Reviewer** — Comprehensive security review agent that analyzes contracts for vulnerabilities, incentive design issues, and OpenZeppelin v5 best practices. Invoke with:
-  ```shell
-  claude "review BasicERC20.sol for security" --agent security-reviewer
-  ```
+    ```shell
+    claude "review BasicERC20.sol for security" --agent security-reviewer
+    ```
 
 ### Configured Hooks
 
