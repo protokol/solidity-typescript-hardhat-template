@@ -7,10 +7,11 @@ import { task } from "hardhat/config"
  --uri https://ipfs.io/ipfs/new-contract-uri-ipfs-hash \
  --network sepolia
  */
-task("erc721-contract-uri", "Set new Contract URI for BasicERC721 Smart Contract")
-	.addParam<string>("contract", "BasicERC721 Smart Contract Address")
-	.addParam<string>("uri", "New Contract URI")
-	.setAction(async (taskArgs, { ethers }) => {
+export const erc721ContractUriTask = task("erc721-contract-uri", "Set new Contract URI for BasicERC721 Smart Contract")
+	.addOption({ name: "contract", description: "BasicERC721 Smart Contract Address", defaultValue: "" })
+	.addOption({ name: "uri", description: "New Contract URI", defaultValue: "" })
+	.setAction(async (taskArgs, hre) => {
+		const { ethers } = await hre.network.connect()
 		const contract = await ethers.getContractAt("BasicERC721", taskArgs.contract)
 
 		console.log(`Current Contract URI: ${await contract.contractURI()}`)
@@ -23,3 +24,4 @@ task("erc721-contract-uri", "Set new Contract URI for BasicERC721 Smart Contract
 
 		console.log(`New Contract URI: ${await contract.contractURI()}`)
 	})
+	.build()

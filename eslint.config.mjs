@@ -23,6 +23,7 @@ export default defineConfig([
 		"**/artifacts",
 		"**/cache",
 		"**/typechain-types",
+		"**/types",
 	]),
 	{
 		extends: compat.extends("eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"),

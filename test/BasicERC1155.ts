@@ -1,6 +1,8 @@
 import { expect } from "chai"
-import { ethers } from "hardhat"
-import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers"
+import hre from "hardhat"
+
+const { ethers, networkHelpers } = await hre.network.connect()
+const { loadFixture } = networkHelpers
 
 describe("BasicERC1155", () => {
 	const setupFixture = async () => {
