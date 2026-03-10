@@ -94,11 +94,32 @@ npm run compile
 
 #### 3. Environment Setup
 
-Create `.env` file and add your environment variables. You can use `.env.example` as a template.
+This project uses [Hardhat Keystore](https://hardhat.org/plugins/nomicfoundation-hardhat-keystore) to securely manage sensitive configuration variables like private keys and RPC URLs. Secrets are stored encrypted and never committed to disk in plain text.
 
-If you are going to use public network, make sure you include the right RPC provider for that network.
+**Set your private key**
 
-Make sure you include either `MNEMONIC` or `PRIVATE_KEY` in your `.env` file.
+```shell
+npx hardhat keystore set PRIVATE_KEY
+```
+
+**Set your RPC URLs** (for the networks you plan to use)
+
+```shell
+npx hardhat keystore set SEPOLIA_RPC_URL
+npx hardhat keystore set MAINNET_RPC_URL
+```
+
+**Set your Etherscan API key** (for contract verification)
+
+```shell
+npx hardhat keystore set ETHERSCAN_API_KEY
+```
+
+**List stored variables**
+
+```shell
+npx hardhat keystore list
+```
 
 ### Example Flow - Deploy ERC721 Token
 
@@ -113,7 +134,7 @@ npx hardhat ignition deploy ignition/modules/BasicERC721Module.ts --network sepo
 **Verify contract**
 
 ```shell
-npx hardhat ignition verify chain-11155111
+npx hardhat ignition verify chain-11155111 --network sepolia 
 ```
 
 #### 1.2 Deploy and Verify
@@ -134,7 +155,7 @@ npx hardhat ignition deploy ignition/modules/BasicERC721Module.ts --network sepo
 
 ```shell
 npx hardhat erc721-mint \
- --contract 0x1FEB5675Be6F256c4680BE447D6C353E02e04fb9 \
+ --contract 0x3fCB912bfb67B78121C5F326C24fBb0D2ca146dD \
  --recipient 0x73faDd7E476a9Bc2dA6D1512A528366A3E50c3cF \
  --network sepolia
 ```
