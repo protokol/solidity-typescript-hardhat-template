@@ -29,6 +29,7 @@
 		"@eslint/eslintrc": "^3.3.5",
 		"@eslint/js": "^10.0.1",
 		"@nomicfoundation/hardhat-toolbox-mocha-ethers": "^3.0.3",
+		"@types/mocha": "^10.0.10",
 		"@types/node": "^22.19.15",
 		"@typescript-eslint/eslint-plugin": "^8.57.0",
 		"@typescript-eslint/parser": "^8.57.0",
