@@ -14,15 +14,25 @@
 		"PostToolUse": [
 			{
 				"matcher": "Edit|Write",
-				"command": "npx prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true",
-				"description": "Auto-format edited files with Prettier"
+				"hooks": [
+					{
+						"type": "command",
+						"command": "npx prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true",
+						"description": "Auto-format edited files with Prettier"
+					}
+				]
 			}
 		],
 		"PreToolUse": [
 			{
 				"matcher": "Edit|Write",
-				"command": "if echo \"$CLAUDE_FILE_PATH\" | grep -qE '^\\.env$|package-lock\\.json$'; then echo 'BLOCK: Do not edit .env or lock files' >&2; exit 1; fi",
-				"description": "Block edits to .env and lock files"
+				"hooks": [
+					{
+						"type": "command",
+						"command": "if echo \"$CLAUDE_FILE_PATH\" | grep -qE '^\\.env$|package-lock\\.json$'; then echo 'BLOCK: Do not edit .env or lock files' >&2; exit 1; fi",
+						"description": "Block edits to .env and lock files"
+					}
+				]
 			}
 		]
 	}
