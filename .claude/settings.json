@@ -1,0 +1,29 @@
+{
+	"permissions": {
+		"allow": [
+			"Bash(npm run test)",
+			"Bash(npm run compile)",
+			"Bash(npm run coverage)",
+			"Bash(npm run format:*)",
+			"Bash(npm run sol:format:*)",
+			"Bash(npm run lint:*)",
+			"Bash(npm run solhint)"
+		]
+	},
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Edit|Write",
+				"command": "npx prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true",
+				"description": "Auto-format edited files with Prettier"
+			}
+		],
+		"PreToolUse": [
+			{
+				"matcher": "Edit|Write",
+				"command": "if echo \"$CLAUDE_FILE_PATH\" | grep -qE '^\\.env$|package-lock\\.json$'; then echo 'BLOCK: Do not edit .env or lock files' >&2; exit 1; fi",
+				"description": "Block edits to .env and lock files"
+			}
+		]
+	}
+}
