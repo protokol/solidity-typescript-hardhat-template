@@ -1,5 +1,6 @@
 import { defineConfig, configVariable } from "hardhat/config"
 import hardhatToolboxMochaEthers from "@nomicfoundation/hardhat-toolbox-mocha-ethers"
+import hardhatVerify from "@nomicfoundation/hardhat-verify"
 
 import { erc20MintTask } from "./tasks/erc20/mint.js"
 import { erc721MintTask } from "./tasks/erc721/mint.js"
@@ -14,7 +15,7 @@ import { blockNumberTask } from "./tasks/utils/block-number.js"
 import { sendEthTask } from "./tasks/utils/send-eth.js"
 
 export default defineConfig({
-	plugins: [hardhatToolboxMochaEthers],
+	plugins: [hardhatToolboxMochaEthers, hardhatVerify],
 	tasks: [
 		erc20MintTask,
 		erc721MintTask,
@@ -50,12 +51,9 @@ export default defineConfig({
 			accounts: [configVariable("PRIVATE_KEY")],
 		},
 	},
-	etherscan: {
-		apiKey: {
-			mainnet: configVariable("ETHERSCAN_API_KEY"),
-			sepolia: configVariable("ETHERSCAN_API_KEY"),
-			polygon: configVariable("POLYGONSCAN_API_KEY"),
-			polygonAmoy: configVariable("POLYGONSCAN_API_KEY"),
+	verify: {
+		etherscan: {
+			apiKey: configVariable("ETHERSCAN_API_KEY"),
 		},
 	},
 	solidity: {
