@@ -134,7 +134,7 @@ npx hardhat ignition deploy ignition/modules/BasicERC721Module.ts --network sepo
 **Verify contract**
 
 ```shell
-npx hardhat ignition verify chain-11155111 --network sepolia 
+npx hardhat ignition verify chain-11155111 --network sepolia
 ```
 
 #### 1.2 Deploy and Verify
