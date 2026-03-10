@@ -4,11 +4,13 @@ import { task } from "hardhat/config"
  Example:
  npx hardhat accounts
  */
+export const accountsTask = task("accounts", "Prints the list of accounts")
+	.setInlineAction(async (_taskArgs, hre) => {
+		const { ethers } = await hre.network.connect()
+		const accounts = await ethers.getSigners()
 
-task("accounts", "Prints the list of accounts", async (_taskArgs, env) => {
-	const accounts = await env.ethers.getSigners()
-
-	for (const account of accounts) {
-		console.log(await account.getAddress())
-	}
-})
+		for (const account of accounts) {
+			console.log(await account.getAddress())
+		}
+	})
+	.build()

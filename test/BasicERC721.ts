@@ -1,7 +1,18 @@
 import { expect } from "chai"
-import { ethers } from "hardhat"
-import { makeInterfaceId } from "@openzeppelin/test-helpers"
-import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers"
+import hre from "hardhat"
+
+const { ethers, networkHelpers } = await hre.network.connect()
+const { loadFixture } = networkHelpers
+
+function computeInterfaceId(signatures: string[]): string {
+	let result = 0n
+	for (const sig of signatures) {
+		const hash = ethers.id(sig)
+		const selector = BigInt(hash.slice(0, 10))
+		result ^= selector
+	}
+	return "0x" + result.toString(16).padStart(8, "0")
+}
 
 describe("BasicERC721", () => {
 	const setupFixture = async () => {
@@ -108,7 +119,7 @@ describe("BasicERC721", () => {
 		it("Should Validate IERC721", async () => {
 			const { contract } = await loadFixture(setupFixture)
 
-			const erc721InterfaceId = makeInterfaceId.ERC165([
+			const erc721InterfaceId = computeInterfaceId([
 				"balanceOf(address)",
 				"ownerOf(uint256)",
 				"safeTransferFrom(address,address,uint256)",
@@ -126,7 +137,7 @@ describe("BasicERC721", () => {
 		it("Should Validate IERC721Enumerable", async () => {
 			const { contract } = await loadFixture(setupFixture)
 
-			const erc721EnumerableInterfaceId = makeInterfaceId.ERC165([
+			const erc721EnumerableInterfaceId = computeInterfaceId([
 				"totalSupply()",
 				"tokenOfOwnerByIndex(address,uint256)",
 				"tokenByIndex(uint256)",

@@ -7,10 +7,11 @@ import { task } from "hardhat/config"
  --recipient 0x73faDd7E476a9Bc2dA6D1512A528366A3E50c3cF \
  --network sepolia
  */
-task("erc721-mint", "Mint token for BasicERC721 Smart Contract")
-	.addParam<string>("contract", "BasicERC721 Smart Contract Address")
-	.addParam<string>("recipient", "NFT Token Recipient")
-	.setAction(async (taskArgs, { ethers }) => {
+export const erc721MintTask = task("erc721-mint", "Mint token for BasicERC721 Smart Contract")
+	.addOption({ name: "contract", description: "BasicERC721 Smart Contract Address", defaultValue: "" })
+	.addOption({ name: "recipient", description: "NFT Token Recipient", defaultValue: "" })
+	.setInlineAction(async (taskArgs, hre) => {
+		const { ethers } = await hre.network.connect()
 		const contract = await ethers.getContractAt("BasicERC721", taskArgs.contract)
 
 		const mintTrx = await contract.safeMint(taskArgs.recipient)
@@ -19,3 +20,4 @@ task("erc721-mint", "Mint token for BasicERC721 Smart Contract")
 		await mintTrx.wait(2)
 		console.log("Transaction confirmed")
 	})
+	.build()

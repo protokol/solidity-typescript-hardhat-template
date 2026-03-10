@@ -1,8 +1,9 @@
 {
 	"compilerOptions": {
 		"baseUrl": ".",
-		"target": "es2021",
-		"module": "commonjs",
+		"target": "es2022",
+		"module": "node16",
+		"moduleResolution": "node16",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
@@ -10,6 +11,6 @@
 		"resolveJsonModule": true,
 		"skipDefaultLibCheck": true
 	},
-	"include": ["./test", "./typechain-types", "./deploy", "./types.d.ts"],
+	"include": ["./test", "./types", "./tasks", "./ignition", "./types.d.ts"],
 	"files": ["./hardhat.config.ts"]
 }
