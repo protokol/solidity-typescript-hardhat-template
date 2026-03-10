@@ -207,6 +207,40 @@ npm run sol:format:write
 npm run solhint
 ```
 
+---
+
+## Claude Code
+
+This repo is configured for [Claude Code](https://github.com/anthropics/claude-code) with project conventions, automated agents, and skills. Claude follows the instructions in [`CLAUDE.md`](./CLAUDE.md) when working in this project.
+
+### Getting Started
+
+```shell
+npm install -g @anthropic-ai/claude-code
+claude
+```
+
+Run `claude` in the project root — it automatically reads `CLAUDE.md` for project conventions.
+
+### Available Skills (Slash Commands)
+
+| Command | Description |
+|---------|-------------|
+| `/new-contract` | Scaffolds a new Solidity contract with test file, Ignition module, and Hardhat tasks. Asks for contract name, token standard, and features, then generates all files following project conventions. |
+| `/deploy-check` | Runs a pre-deployment checklist: compile, test, coverage, lint, format check, Ignition module review, and network config verification. Outputs a PASS/FAIL/WARN summary table. |
+
+### Available Agents
+
+- **Security Reviewer** — Comprehensive security review agent that analyzes contracts for vulnerabilities, incentive design issues, and OpenZeppelin v5 best practices. Invoke with:
+  ```shell
+  claude "review BasicERC20.sol for security" --agent security-reviewer
+  ```
+
+### Configured Hooks
+
+- **Auto-format on save** — Edited `.ts` and `.sol` files are automatically formatted with Prettier after each edit.
+- **Protected files** — `.env` and `package-lock.json` are blocked from direct edits.
+
 <br>
 
 ## Contact Protokol
